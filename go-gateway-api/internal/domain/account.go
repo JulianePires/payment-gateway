@@ -8,6 +8,7 @@ import (
 	"time"
 )
 
+// Account representa uma conta de usuário
 type Account struct {
 	ID       string
 	Name     string
@@ -19,6 +20,7 @@ type Account struct {
 	UpdateAt time.Time
 }
 
+// generateAPIKey gera uma chave de API aleatória
 func generateAPIKey() string {
 	// Generate a random 16-byte API key
 	b := make([]byte, 16)
@@ -26,6 +28,7 @@ func generateAPIKey() string {
 	return hex.EncodeToString(b)
 }
 
+// NewAccount cria uma nova conta com um ID único e uma chave de API gerada aleatoriamente
 func NewAccount(name, email string) *Account {
 	account := &Account{
 		ID:       uuid.New().String(),
@@ -40,6 +43,7 @@ func NewAccount(name, email string) *Account {
 	return account
 }
 
+// AddBalance adiciona um valor ao saldo da conta
 func (a *Account) AddBalance(amount float64) {
 	a.mu.Lock()
 	defer a.mu.Unlock()
