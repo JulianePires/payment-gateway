@@ -9,7 +9,7 @@ Content-Type: application/json
 
 {
   "name": "John Doe",
-  "email": "john@doew.com"
+  "email": "john@aaaa.com"
 }
 
 ### Obter dados da conta
@@ -53,4 +53,4 @@ X-API-Key: {{apiKey}}
   "expiry_month": 12,
   "expiry_year": 2025,
   "cardholder_name": "John Doe"
-}
+} 
