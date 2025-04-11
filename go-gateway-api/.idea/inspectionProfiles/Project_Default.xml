@@ -16,6 +16,7 @@
         <method importPath="database/sql" receiver="*Stmt" name="Close" />
         <method importPath="encoding/json" receiver="*Encoder" name="Encode" />
         <method importPath="database/sql" receiver="*DB" name="Close" />
+        <method importPath="database/sql" receiver="*Rows" name="Close" />
       </methods>
     </inspection_tool>
   </profile>
