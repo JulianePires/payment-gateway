@@ -38,7 +38,7 @@ type InvoiceOutput struct {
 }
 
 // ToInvoice cria um objeto Invoice a partir dos dados de entrada CreateInvoiceInput
-func ToInvoice(input *CreateInvoiceInput, accountID string) (*domain.Invoice, error) {
+func ToInvoice(input CreateInvoiceInput, accountID string) (*domain.Invoice, error) {
 	card := domain.CreditCard{
 		Number:         input.CardNumber,
 		CVV:            input.CVV,
