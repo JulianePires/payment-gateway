@@ -5,6 +5,7 @@ import (
 	"github.com/devfullcycle/imersao22/go-gateway/internal/web/handlers"
 	"github.com/devfullcycle/imersao22/go-gateway/internal/web/middleware"
 	"github.com/go-chi/chi"
+	"github.com/rs/cors"
 	"net/http"
 )
 
@@ -42,10 +43,22 @@ func (s *Server) ConfigureRoutes() {
 	})
 }
 
+func (s *Server) ConfigureCors() http.Handler {
+	corsHandler := cors.New(cors.Options{
+		AllowedOrigins:   []string{"*"}, // Replace with your allowed origins
+		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE"},
+		AllowedHeaders:   []string{"Content-Type", "X-API-Key"},
+		AllowCredentials: true,
+	})
+
+	return corsHandler.Handler(s.router)
+}
+
 func (s *Server) Start() error {
+	handler := s.ConfigureCors()
 	s.server = &http.Server{
 		Addr:    ":" + s.port,
-		Handler: s.router,
+		Handler: handler,
 	}
 
 	s.ConfigureRoutes()

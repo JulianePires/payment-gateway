@@ -2,7 +2,7 @@ import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
 
 export function middleware(request: NextRequest) {
-  const currentUser = request.cookies.get("user")?.value
+  const currentUser = request.cookies.get("account")?.value
   const isAuthPage = request.nextUrl.pathname === "/auth"
 
   // Se o usuário não estiver autenticado e não estiver na página de autenticação,

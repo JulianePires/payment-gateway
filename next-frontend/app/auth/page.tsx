@@ -15,8 +15,8 @@ import { useAuth } from "@/lib/auth"
 import { useToast } from "@/hooks/use-toast"
 
 const authSchema = z.object({
-  apiKey: z.string().min(10, {
-    message: "API Key deve ter pelo menos 10 caracteres",
+  apiKey: z.string().length(32, {
+    message: "API Key deve ter 32 caracteres",
   }),
 })
 
@@ -40,7 +40,7 @@ export default function AuthPage() {
 
     if (success) {
       toast.success("Login realizado com sucesso", {
-        description: "Bem-vindo ao Paga.Nos",
+        description: "Bem-vindo ao Full Cycle Gateway",
       })
     } else {
       setError("API Key inválida. Por favor, verifique e tente novamente.")
